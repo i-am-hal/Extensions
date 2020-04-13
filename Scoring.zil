@@ -1,11 +1,8 @@
-"Game - Scoring"
+"S C O R I N G  -  A ZILF Library Extension"
 
-"Actions"
+"ACTIONS"
 
-<SETG EXTRA-GAME-VERBS '(NOTIFY-OFF NOTIFY-ON SCORE)>
-
-
-"Action - Disabling Score Update Notification"
+"Disabling Score Update Notification"
 
 <SYNTAX NOTIFY OFF OBJECT (FIND KLUDGEBIT) = V-NOTIFY-OFF>
 
@@ -14,8 +11,7 @@
     <SETG SCORE-UPDATE-NOTIFICATION-ON <>>
 >
 
-
-"Action - Enabling Score Update Notification"
+"Enabling Score Update Notification"
 
 <SYNTAX NOTIFY ON OBJECT (FIND KLUDGEBIT) = V-NOTIFY-ON>
 <SYNTAX NOTIFY = V-NOTIFY-ON>
@@ -25,8 +21,7 @@
     <SETG SCORE-UPDATE-NOTIFICATION-ON T>
 >
 
-
-"Action - On Demand Score Notification"
+"On Demand Score Notification"
 
 <SYNTAX SCORE = V-SCORE>
 
@@ -37,9 +32,9 @@
 >
 
 
-"Activities"
+"ACTIVITIES"
 
-"Activity - Score Update Notification"
+"Score Update Notification"
 
 <GLOBAL PREV-SCORE 0>
 <GLOBAL SCORE-UPDATE-NOTIFICATION-ON T>
@@ -61,8 +56,7 @@
         <SETG PREV-SCORE ,SCORE>)>
 >
 
-
-"Activity - Final Score Notification"
+"Final Score Notification"
 
 <GLOBAL MAX-SCORE 0>
 
@@ -77,26 +71,4 @@
         <CRLF>
         <PRINT-FINAL-SCORE>
     >
->
-
-
-"Activity - Finishing the Game"
-
-<GLOBAL FINISH-CODE 0>
-
-<ROUTINE FINISH-IF-CODE-SET ()
-    <COND (,FINISH-CODE
-        <COND (<1? ,FINISH-CODE>
-            <PRINT-WIN-MESSAGE>)
-        (ELSE
-            <PRINT-LOSE-MESSAGE>)>
-    )>
->
-
-<ROUTINE PRINT-WIN-MESSAGE ()
-    <JIGS-UP "    *** You have won ***">
->
-
-<ROUTINE PRINT-LOSE-MESSAGE ()
-    <JIGS-UP "    *** You have lost ***">
 >
